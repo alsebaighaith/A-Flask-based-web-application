@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h2 class="mb-4">Search Customers</h2>
+
+    <form method="GET">
+
+        <!-- Customer Name -->
+        <div class="mb-3">
+            <label class="form-label">Customer Name</label>
+            <input 
+                type="text" 
+                name="customer_name" 
+                class="form-control" 
+                placeholder="Enter customer name (optional)"
+                value="{{ request.args.get('customer_name', '') }}"
+            >
+        </div>
+
+        <!-- Country Dropdown -->
+        <div class="mb-3">
+            <label class="form-label">Country</label>
+            <select name="country" class="form-control">
+                <option value="">All Countries</option>
+
+                {% for country in countries %}
+                    <option value="{{ country }}"
+                        {% if request.args.get('country') == country %}selected{% endif %}
+                    >
+                        {{ country }}
+                    </option>
+                {% endfor %}
+
+            </select>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="btn btn-primary">
+            🔍 Search
+        </button>
+
+    </form>
+
+    <hr>
+
+    <!-- النتائج -->
+    {% if results %}
+    <h4 class="mt-4">Results</h4>
+
+    <table class="table table-bordered table-striped mt-3">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Country</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for c in results %}
+            <tr>
+                <td>{{ c.customer_id }}</td>
+                <td>{{ c.first_name }}</td>
+                <td>{{ c.last_name }}</td>
+                <td>{{ c.email }}</td>
+                <td>{{ c.address }}</td>
+                <td>{{ c.city }}</td>
+                <td>{{ c.country }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% else %}
+        {% if request.args %}
+            <div class="alert alert-warning mt-4">
+                No results found
+            </div>
+        {% endif %}
+    {% endif %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-5 text-center">
+    <div class="card shadow p-5">
+
+        <div class="mb-4">
+            <h1 style="font-size: 60px;">❌</h1>
+        </div>
+
+        <h2 class="text-danger mb-3">
+            No Results Found
+        </h2>
+
+        <p class="text-muted">
+            The actor name is incorrect or no movies were found.
+            Please try again with a valid name.
+        </p>
+
+        <div class="mt-4">
+            <a href="{{ url_for('movies') }}" class="btn btn-primary">
+                🔙 Try Again
+            </a>
+
+            <a href="{{ url_for('dashboard') }}" class="btn btn-outline-secondary ms-2">
+                🏠 Home Page
+            </a>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

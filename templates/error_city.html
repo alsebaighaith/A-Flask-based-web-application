@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container mt-5 text-center">
+
+    <div class="card shadow p-5">
+
+        <h1 style="font-size: 60px;">🏙️❌</h1>
+
+        <h2 class="text-warning mt-3">
+            No Customers in This City
+        </h2>
+
+        <p class="text-muted mt-3">
+            There are no customers available in the selected city.<br>
+            Try selecting another city.
+        </p>
+
+        <div class="mt-4">
+            <a href="{{ url_for('customer') }}" class="btn btn-primary">
+                🔙 Back to Search
+            </a>
+
+            <a href="{{ url_for('dashboard') }}" class="btn btn-outline-secondary ms-2">
+                🏠 Home
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

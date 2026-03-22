@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <h2>Movies List</h2>
+    <form method="GET">
+        <div class="mb-3">
+            <label for="rating">Filter by Rating:</label>
+            <select name="rating" class="form-control">
+                <option value="">Rating</option>
+                {% for rating in RATINGS %}
+            <option value="{{ rating }}">{{ rating }}</option>
+            {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3"> <label for="actor">Search by Actor:</label> <input type="text" name="actor" class="form-control" placeholder="Write the actor's name..."> </div>
+        <button type="submit" class="btn btn-primary">submit</button>
+    </form>
+
+<hr>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for movie in results %}
+            <tr>
+                <td>{{ movie['title'] }}</td>
+                <td>{{ movie['description'] }}</td>
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

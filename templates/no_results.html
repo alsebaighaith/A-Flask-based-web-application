@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container mt-5 text-center">
+
+    <div class="card shadow p-5">
+
+        <!-- Icon -->
+        <div class="mb-4">
+            <h1 style="font-size: 60px;">🔍</h1>
+        </div>
+
+        <!-- Title -->
+        <h2 class="text-warning mb-3">
+            No Results Found
+        </h2>
+
+        <!-- Message -->
+        <p class="text-muted">
+            We couldn't find any movies matching your search.
+            Please try different filters or actor name.
+        </p>
+
+        <!-- Actions -->
+        <div class="mt-4">
+            <a href="{{ url_for('movies') }}" class="btn btn-primary">
+                🔙 Back to Movies
+            </a>
+
+            <a href="{{ url_for('dashboard') }}" class="btn btn-outline-secondary ms-2">
+                🏠 Home Page
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

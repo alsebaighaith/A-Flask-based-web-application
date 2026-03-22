@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h2 class="mb-4 text-center">Sales Report by Category</h2>
+
+    <table class="table table-bordered table-striped text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>Category</th>
+                <th>Total Sales</th>
+                <th>Aug-2005</th>
+                <th>Jun-2005</th>
+                <th>Jul-2005</th>
+                <th>May-2005</th>
+                <th>Feb-2006</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for row in results %}
+            <tr>
+                <td>{{ row.name }}</td>
+                <td>{{ row.total }}</td>
+                <td>{{ row['Aug-2005'] }}</td>
+                <td>{{ row['Jun-2005'] }}</td>
+                <td>{{ row['Jul-2005'] }}</td>
+                <td>{{ row['May-2005'] }}</td>
+                <td>{{ row['Feb-2006'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endblock %}
